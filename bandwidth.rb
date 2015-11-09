@@ -1,13 +1,20 @@
 require 'sinatra'
 require 'json'
+require 'resolv'
+
+
 
 get '/' do
   [200, 'Welcome to bandwidth.waits.io']
 end
 
-get '/ip.json' do
+get '/info.json' do
+  ip = request.ip
+  resolver = Resolv::DNS.new(:nameserver => ['8.8.8.8', '8.8.4.4'])
+  host = resolver.getnames(ip).join(',')
+
   content_type :json
-  { :ip => request.ip }.to_json
+  { :ip => ip, :host => host }.to_json
 end
 
 post '/upload' do
