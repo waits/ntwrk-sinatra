@@ -17,6 +17,6 @@ class BandwidthTest < Minitest::Test
   def test_ip
     get '/info.json'
     assert_equal 200, last_response.status
-    assert_equal '{"ip":"127.0.0.1","host":""}', last_response.body
+    assert_equal '{"ip":"127.0.0.1","host":"","country":null,"city":null}', last_response.body
   end
 end

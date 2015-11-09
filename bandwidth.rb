@@ -1,8 +1,7 @@
 require 'sinatra'
 require 'json'
 require 'resolv'
-
-
+require 'maxminddb'
 
 get '/' do
   [200, 'Welcome to bandwidth.waits.io']
@@ -13,8 +12,13 @@ get '/info.json' do
   resolver = Resolv::DNS.new(:nameserver => ['8.8.8.8', '8.8.4.4'])
   host = resolver.getnames(ip).join(',')
 
+  db = MaxMindDB.new('/var/local/GeoLite2-City.mmdb')
+  result = db.lookup(ip)
+  country = result.country.name
+  city = result.city.name
+
   content_type :json
-  { :ip => ip, :host => host }.to_json
+  { :ip => ip, :host => host, :country => country, :city => city }.to_json
 end
 
 post '/upload' do
