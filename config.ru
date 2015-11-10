@@ -1,2 +1,2 @@
-require './bandwidth.rb'
+require './ntwrk.rb'
 run Sinatra::Application

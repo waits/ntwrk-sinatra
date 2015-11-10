@@ -1,8 +1,8 @@
-require './bandwidth.rb'
+require './ntwrk.rb'
 require 'minitest/autorun'
 require 'rack/test'
 
-class BandwidthTest < Minitest::Test
+class NtwrkTest < Minitest::Test
   include Rack::Test::Methods
 
   def app

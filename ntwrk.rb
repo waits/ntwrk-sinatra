@@ -4,7 +4,7 @@ require 'resolv'
 require 'maxminddb'
 
 get '/' do
-  [200, 'Welcome to bandwidth.waits.io']
+  [200, 'Welcome to ntwrk.waits.io']
 end
 
 get '/info.json' do
