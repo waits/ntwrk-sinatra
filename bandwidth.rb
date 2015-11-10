@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/info.json' do
-  ip = request.ip
+  ip = params[:ip] || request.ip
   resolver = Resolv::DNS.new(:nameserver => ['8.8.8.8', '8.8.4.4'])
   host = resolver.getnames(ip).join(',')
 
