@@ -17,12 +17,12 @@ class NtwrkTest < Minitest::Test
   def test_ip
     get '/info.json'
     assert_equal 200, last_response.status
-    assert_equal '{"ip":"127.0.0.1","host":"","country":null,"city":null}', last_response.body
+    assert_equal '{"ip":"127.0.0.1","host":"","country":null,"region":null,"city":null}', last_response.body
   end
 
   def test_other_ip
     get '/info.json?ip=8.8.8.8'
     assert_equal 200, last_response.status
-    assert_equal '{"ip":"8.8.8.8","host":"google-public-dns-a.google.com","country":"United States","city":"Mountain View"}', last_response.body
+    assert_equal '{"ip":"8.8.8.8","host":"google-public-dns-a.google.com","country":"United States","region":"California","city":"Mountain View"}', last_response.body
   end
 end

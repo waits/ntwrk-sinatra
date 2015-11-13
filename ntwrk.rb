@@ -15,10 +15,12 @@ get '/info.json' do
   db = MaxMindDB.new('/var/local/GeoLite2-City.mmdb')
   result = db.lookup(ip)
   country = result.country.name
+  region = result.subdivisions.first
+  region_name = region ? region.name : nil
   city = result.city.name
 
   content_type :json
-  { :ip => ip, :host => host, :country => country, :city => city }.to_json
+  { :ip => ip, :host => host, :country => country, :region => region_name, :city => city }.to_json
 end
 
 post '/upload' do
