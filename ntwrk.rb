@@ -1,8 +1,5 @@
-require 'sinatra'
-require 'tilt/haml'
 require 'json'
 require 'resolv'
-require 'maxminddb'
 
 def json(hash)
   content_type :json

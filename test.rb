@@ -1,6 +1,4 @@
-require './ntwrk.rb'
-require 'minitest/autorun'
-require 'rack/test'
+require File.expand_path '../test_helper.rb', __FILE__
 
 class NtwrkTest < Minitest::Test
   include Rack::Test::Methods
