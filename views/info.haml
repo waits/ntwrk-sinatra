@@ -1,0 +1,15 @@
+%html
+  %body
+    %div.container{:style => 'text-align: center; padding: 120px'}
+      %label Your IP address is
+      %h2= @ip
+      %br
+      %label Your GeoIP data is
+      %br
+      %br
+      %div
+        %strong= "#{@city}, #{@region}, #{@country}"
+      %div
+        %strong= "#{@lat}, #{@lon}"
+      %div
+        %strong= @tz
