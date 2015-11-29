@@ -1,5 +1,5 @@
 language: ruby
 cache: bundler
 sudo: false
-before_script: ./update_geo_db.sh
+before_script: ./setup.sh
 script: ruby test.rb
