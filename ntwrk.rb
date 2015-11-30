@@ -49,7 +49,7 @@ get '/info.?:format?' do |fmt|
   end
 end
 
-post '/test/upload' do
+post '/upload' do
   `sudo rm #{env['HTTP_X_FILE']}`
   [200, 'OK']
 end
