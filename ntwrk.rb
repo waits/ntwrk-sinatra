@@ -29,7 +29,7 @@ get '/info.?:format?' do |fmt|
   resolver = Resolv::DNS.new(:nameserver => ['8.8.8.8', '8.8.4.4'])
   @host = resolver.getnames(@ip).join(',')
 
-  db = MaxMindDB.new('./GeoLite2-City.mmdb')
+  db = MaxMindDB.new('./data/GeoLite2-City.mmdb')
   result = db.lookup(@ip)
   subdivision = result.subdivisions.first
 

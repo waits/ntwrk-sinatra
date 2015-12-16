@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if [ -e GeoLite2-City.mmdb ]; then
-    rm GeoLite2-City.mmdb
-fi
+cd data
+rm -f GeoLite2-City.mmdb
 wget "https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 gunzip "GeoLite2-City.mmdb.gz"
+cd ..
 
 if [ ! -e public/test ]; then
     mkdir public/test
