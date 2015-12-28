@@ -33,10 +33,10 @@ class NtwrkTest < Minitest::Test
 
     get '/info.txt?ip=8.8.8.8'
     assert_equal 200, last_response.status
-    assert_equal "8.8.8.8\ngoogle-public-dns-a.google.com\nMountain View, California, United States\n37.3845, -122.0881\nAmerica/Los_Angeles", last_response.body
+    assert_equal "8.8.8.8\ngoogle-public-dns-a.google.com\n\nMountain View, California, United States\n37.3845, -122.0881\nAmerica/Los_Angeles", last_response.body
 
     get '/info.json?ip=8.8.8.8'
     assert_equal 200, last_response.status
-    assert_equal '{"ip":"8.8.8.8","host":"google-public-dns-a.google.com","country":"United States","region":"California","city":"Mountain View","latitude":37.3845,"longitude":-122.0881,"time_zone":"America/Los_Angeles"}', last_response.body
+    assert_equal '{"ip":"8.8.8.8","host":"google-public-dns-a.google.com","isp":null,"country":"United States","region":"California","city":"Mountain View","latitude":37.3845,"longitude":-122.0881,"time_zone":"America/Los_Angeles"}', last_response.body
   end
 end

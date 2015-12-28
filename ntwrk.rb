@@ -33,6 +33,12 @@ get '/info.?:format?' do |fmt|
   result = db.lookup(@ip)
   subdivision = result.subdivisions.first
 
+  @isp = case @host
+    when /comcast/ then 'Comcast'
+    when /att/ then 'AT&T'
+    else nil
+  end
+
   @country = result.country.name
   @region = subdivision ? subdivision.name : nil
   @city = result.city.name
@@ -43,9 +49,9 @@ get '/info.?:format?' do |fmt|
   case fmt
     when nil then haml :info
     when 'txt'
-     text("#{@ip}\n#{@host}\n#{@city}, #{@region}, #{@country}\n#{@lat}, #{@lon}\n#{@tz}")
+     text("#{@ip}\n#{@host}\n#{@isp}\n#{@city}, #{@region}, #{@country}\n#{@lat}, #{@lon}\n#{@tz}")
     when 'json'
-      json(ip: @ip, host: @host, country: @country, region: @region, city: @city, latitude: @lat, longitude: @lon, time_zone: @tz)
+      json(ip: @ip, host: @host, isp: @isp, country: @country, region: @region, city: @city, latitude: @lat, longitude: @lon, time_zone: @tz)
   end
 end
 
